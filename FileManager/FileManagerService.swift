@@ -26,7 +26,6 @@ final class FileManagerService: FileManagerServiceProtocol {
     var model = Model(path: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
     
     func contentsOfDirectory() -> [String] {
-        let items = (try? FileManager.default.contentsOfDirectory(atPath: model.path)) ?? []
         return (try? FileManager.default.contentsOfDirectory(atPath: model.path)) ?? []
     }
     
@@ -42,5 +41,15 @@ final class FileManagerService: FileManagerServiceProtocol {
     func removeContent(index: Int) {
         let pathForDelete = model.path + "/" + model.items[index]
         try? FileManager.default.removeItem(atPath: pathForDelete)
+    }
+    
+    func sortFilesalphabetically(data: inout [String]) {
+        data.sort(by: { data1, data2 in return data1 > data2
+        })
+    }
+    
+    func sortFilesReverseAlphabetically(data: inout [String]) {
+        data.sort(by: { data1, data2 in return data1 < data2
+        })
     }
 }

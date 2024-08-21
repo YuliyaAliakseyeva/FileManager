@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E56B8A82C7331A300256823 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56B8A72C7331A300256823 /* SettingsViewController.swift */; };
+		3E98BA6E2C6E007C00F9AA18 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98BA6D2C6E007C00F9AA18 /* LogInViewController.swift */; };
+		3E98BA722C6E189600F9AA18 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98BA712C6E189600F9AA18 /* PasswordViewModel.swift */; };
+		3E98BA742C6E1B6400F9AA18 /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98BA732C6E1B6400F9AA18 /* CreatePasswordViewController.swift */; };
+		3EC535AB2C6F37EF0070B20B /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3EC535AA2C6F37EF0070B20B /* KeychainAccess */; };
 		3EE085012C60C065009AB5EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE085002C60C065009AB5EE /* AppDelegate.swift */; };
 		3EE085032C60C065009AB5EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE085022C60C065009AB5EE /* SceneDelegate.swift */; };
 		3EE085052C60C065009AB5EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE085042C60C065009AB5EE /* ViewController.swift */; };
@@ -19,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E56B8A72C7331A300256823 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3E98BA6D2C6E007C00F9AA18 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		3E98BA712C6E189600F9AA18 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		3E98BA732C6E1B6400F9AA18 /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
 		3EE084FD2C60C065009AB5EE /* FileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EE085002C60C065009AB5EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EE085022C60C065009AB5EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC535AB2C6F37EF0070B20B /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,8 +74,12 @@
 			children = (
 				3EE085002C60C065009AB5EE /* AppDelegate.swift */,
 				3EE085022C60C065009AB5EE /* SceneDelegate.swift */,
+				3E56B8A72C7331A300256823 /* SettingsViewController.swift */,
 				3EE085042C60C065009AB5EE /* ViewController.swift */,
 				3EE085162C60C83B009AB5EE /* FileManagerService.swift */,
+				3E98BA6D2C6E007C00F9AA18 /* LogInViewController.swift */,
+				3E98BA732C6E1B6400F9AA18 /* CreatePasswordViewController.swift */,
+				3E98BA712C6E189600F9AA18 /* PasswordViewModel.swift */,
 				3EE085182C615A65009AB5EE /* TextPicker.swift */,
 				3EE0851A2C616DBF009AB5EE /* ImagePicker.swift */,
 				3EE085142C60C255009AB5EE /* Model.swift */,
@@ -92,6 +106,9 @@
 			dependencies = (
 			);
 			name = FileManager;
+			packageProductDependencies = (
+				3EC535AA2C6F37EF0070B20B /* KeychainAccess */,
+			);
 			productName = FileManager;
 			productReference = 3EE084FD2C60C065009AB5EE /* FileManager.app */;
 			productType = "com.apple.product-type.application";
@@ -120,6 +137,9 @@
 				Base,
 			);
 			mainGroup = 3EE084F42C60C065009AB5EE;
+			packageReferences = (
+				3EC535A92C6F37EE0070B20B /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 3EE084FE2C60C065009AB5EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,9 +170,13 @@
 				3EE085172C60C83B009AB5EE /* FileManagerService.swift in Sources */,
 				3EE085052C60C065009AB5EE /* ViewController.swift in Sources */,
 				3EE0851B2C616DBF009AB5EE /* ImagePicker.swift in Sources */,
+				3E98BA6E2C6E007C00F9AA18 /* LogInViewController.swift in Sources */,
 				3EE085012C60C065009AB5EE /* AppDelegate.swift in Sources */,
 				3EE085032C60C065009AB5EE /* SceneDelegate.swift in Sources */,
+				3E98BA742C6E1B6400F9AA18 /* CreatePasswordViewController.swift in Sources */,
 				3EE085152C60C255009AB5EE /* Model.swift in Sources */,
+				3E98BA722C6E189600F9AA18 /* PasswordViewModel.swift in Sources */,
+				3E56B8A82C7331A300256823 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +387,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3EC535A92C6F37EE0070B20B /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3EC535AA2C6F37EF0070B20B /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3EC535A92C6F37EE0070B20B /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3EE084F52C60C065009AB5EE /* Project object */;
 }
