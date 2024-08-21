@@ -46,12 +46,8 @@ class ViewController: UIViewController {
     @objc private func didTapCreatePhoto() {
         imagePicker.showAddPhoto(in: self) { imageURL in
             let pathOriginPhoto = imageURL.path()
-            //            var imageName = "tyui.jpeg"
             let imageName: String = NSString(string: pathOriginPhoto).lastPathComponent as String
-            //            NSString(string: pathOriginPhoto).lastPathComponent
             self.fileManagerService.createFile(url: imageURL, addedPath: imageName)
-            print("pathOriginPhoto - \(String(describing: pathOriginPhoto))")
-            print("imageURL - \(imageURL)")
             self.tableView.reloadData()
         }
     }
