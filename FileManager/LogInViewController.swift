@@ -78,9 +78,20 @@ class LogInViewController: UIViewController {
     
     @objc func enteredPassword() {
         if passwordTextField.text?.count ?? 0 > 3, PasswordViewModel.shared.checkPassword(interedPassword: passwordTextField.text ?? "") {
-            self.passwordButton.setTitle("Повторите пароль", for: .normal)
-            self.passwordTextField.text = ""
-            self.passwordButton.addTarget(self, action: #selector(secondEnteredPassword), for: .touchUpInside)
+            let tabBarController = UITabBarController()
+            
+            let listVC = ViewController()
+            let settingsVC = SettingsViewController()
+            
+            let listNavigationController = UINavigationController(rootViewController: listVC)
+            
+            tabBarController.viewControllers = [listNavigationController, settingsVC]
+            
+            listVC.tabBarItem = UITabBarItem(title: "Docs", image: UIImage(systemName: "doc"), tag: 0)
+            settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gearshape"), tag: 0)
+            
+           
+            navigationController?.pushViewController(tabBarController, animated: true)
         } else {
             let alert = UIAlertController(title: "Неверный пароль", message: nil, preferredStyle: .alert)
             
@@ -91,23 +102,6 @@ class LogInViewController: UIViewController {
             present(alert, animated: true)
             
         }
-    }
-    
-    @objc func secondEnteredPassword() {
-        let tabBarController = UITabBarController()
-        
-        let listVC = ViewController()
-        let settingsVC = SettingsViewController()
-        
-        let listNavigationController = UINavigationController(rootViewController: listVC)
-        
-        tabBarController.viewControllers = [listNavigationController, settingsVC]
-        
-        listVC.tabBarItem = UITabBarItem(title: "Docs", image: UIImage(systemName: "doc"), tag: 0)
-        settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gearshape"), tag: 0)
-        
-       
-        navigationController?.pushViewController(tabBarController, animated: true)
     }
     
     private func setUpSubviews() {

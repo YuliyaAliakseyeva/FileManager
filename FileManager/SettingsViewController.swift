@@ -31,8 +31,6 @@ class SettingsViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
         ])
         
-//        subscribeOnNotificationCenter()
-        
     }
     
 
@@ -42,19 +40,6 @@ class SettingsViewController: UIViewController {
         self.tabBarController?.navigationItem.rightBarButtonItems = []
         
     }
-    
-//    func subscribeOnNotificationCenter() {
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(notificationAction),
-//            name: .changeTypeOfSorting,
-//            object: nil
-//        )
-//    }
-//    
-//    @objc func notificationAction() {
-//        print("Подписка на notification center")
-//    }
 
 }
 
@@ -66,7 +51,7 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            2
+            sortingTipes.count
         } else {
             1
         }
@@ -84,7 +69,6 @@ extension SettingsViewController: UITableViewDataSource {
                 cell.accessoryType = .none
             }
             cell.contentConfiguration = config
-//            NotificationCenter.default.post(name: .changeTypeOfSorting, object: nil)
             return cell
         } else {
             let cell = UITableViewCell()
@@ -120,9 +104,5 @@ extension SettingsViewController: UITableViewDelegate {
     }
 }
 
-//extension NSNotification.Name {
-//    static let changeTypeOfSorting = NSNotification.Name(rawValue: "changeTypeOfSorting")
-//}
-//
 
     

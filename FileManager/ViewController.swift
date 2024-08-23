@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     
     var fileManagerService = FileManagerService()
-    var listOfFiles: [String]?
     var imagePicker = ImagePicker()
     var currentSortingTipe: String = ""
     
@@ -33,10 +32,7 @@ class ViewController: UIViewController {
             tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
         ])
-        
-//        configureList()
-//        subscribeOnNotificationCenter()
-        
+        print("viewDidLoad")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,31 +43,6 @@ class ViewController: UIViewController {
         let createPhotoButton = UIBarButtonItem(image: UIImage(systemName: "photo.badge.plus"), style: .plain, target: self, action: #selector(didTapCreatePhoto))
         self.tabBarController?.navigationItem.rightBarButtonItems = [createFolderButton, createPhotoButton]
         
-        
-        currentSortingTipe = UserDefaults.standard.string(forKey: "typeOfSorting") ?? ""
-        configureList()
-//        subscribeOnNotificationCenter()
-        tableView.reloadData()
-        
-    }
-    
-    func configureList() {
-//        subscribeOnNotificationCenter()
-//    currentSortingTipe = UserDefaults.standard.string(forKey: "typeOfSorting") ?? ""
-        if currentSortingTipe == "alphabetically" {
-            
-            listOfFiles = fileManagerService.contentsOfDirectory().sorted(by: { (s1: String, s2: String) -> Bool in
-               return s1 < s2
-            })
-        } else if currentSortingTipe == "reverseAlphabetically" {
-            listOfFiles = fileManagerService.contentsOfDirectory().sorted(by: { (s1: String, s2: String) -> Bool in
-               return s1 > s2
-            })
-            
-        } else {
-            listOfFiles = fileManagerService.contentsOfDirectory()
-            
-        }
         tableView.reloadData()
     }
     
@@ -91,21 +62,6 @@ class ViewController: UIViewController {
         }
     }
     
-//    func subscribeOnNotificationCenter() {
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(notificationAction),
-//            name: .changeTypeOfSorting,
-//            object: nil
-//        )
-//    }
-//    
-//    @objc func notificationAction() {
-////        currentSortingTipe = UserDefaults.standard.string(forKey: "typeOfSorting") ?? ""
-//        tableView.reloadData()
-        
-//    }
-    
 }
 
 extension ViewController: UITableViewDataSource {
@@ -117,7 +73,21 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         var config = UIListContentConfiguration.cell()
-        config.text = listOfFiles?[indexPath.row]
+        currentSortingTipe = UserDefaults.standard.string(forKey: "typeOfSorting") ?? ""
+        if currentSortingTipe == "alphabetically" {
+            var listOfFiles = fileManagerService.contentsOfDirectory().sorted(by: { (s1: String, s2: String) -> Bool in
+                return s1 < s2
+             })
+            config.text = listOfFiles[indexPath.row]
+        } else if currentSortingTipe == "reverseAlphabetically" {
+            var listOfFiles = fileManagerService.contentsOfDirectory().sorted(by: { (s1: String, s2: String) -> Bool in
+               return s1 > s2
+            })
+            config.text = listOfFiles[indexPath.row]
+        } else {
+            config.text = fileManagerService.contentsOfDirectory()[indexPath.row]
+            
+        }
         cell.contentConfiguration = config
         cell.accessoryType = fileManagerService.model.isPathForItemIsFolder(index: indexPath.row) ? .disclosureIndicator : .none
         return cell

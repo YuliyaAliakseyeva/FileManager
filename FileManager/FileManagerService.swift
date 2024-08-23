@@ -42,14 +42,4 @@ final class FileManagerService: FileManagerServiceProtocol {
         let pathForDelete = model.path + "/" + model.items[index]
         try? FileManager.default.removeItem(atPath: pathForDelete)
     }
-    
-    func sortFilesalphabetically(data: inout [String]) {
-        data.sort(by: { data1, data2 in return data1 > data2
-        })
-    }
-    
-    func sortFilesReverseAlphabetically(data: inout [String]) {
-        data.sort(by: { data1, data2 in return data1 < data2
-        })
-    }
 }

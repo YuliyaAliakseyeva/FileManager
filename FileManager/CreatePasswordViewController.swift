@@ -70,7 +70,9 @@ class CreatePasswordViewController: UIViewController {
             print("ошибка при создании пароля")
         }
         dismiss(animated: true)
-        completion!()
+        if !exist {
+            completion!()
+        }
     }
 
     override func viewDidLoad() {
